@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text, Picker } from 'react-native';
-import { Card, CardSection, Input, Button } from './common';
 import { connect } from 'react-redux';
+import { CardSection, Input } from './common';
 import * as actions from '../actions';
 
 class EmployeeForm extends Component {
-
   render(){
-    console.log(`shift: ${this.props.shiftDay}`);
-
     return (
-      <Card>
+      <View>
         <CardSection>
           <Input
             placeholder="John Doe"
@@ -30,27 +27,14 @@ class EmployeeForm extends Component {
 
         <CardSection style={{ flexDirection: 'column', height: 80 }}>
           <Text style={styles.pickerTextStyle}>Select a shift</Text>
-          <Picker style={{ flex: 1 }} selectedValue={this.props.shiftDay} onValueChange={ (shiftDay) => this.props.onChangeField({ prop: 'shiftDay', value: shiftDay }) }>
+          <Picker style={{ flex: 1 }} selectedValue={this.props.shiftDay } onValueChange={ (shiftDay) => this.props.onChangeField({ prop: 'shiftDay', value: shiftDay }) }>
             { days.map( (day, index) => <Picker.Item key={index} label={day} value={day} /> ) }
           </Picker>
         </CardSection>
-
-        <CardSection>
-          <Button>Save</Button>
-        </CardSection>
-      </Card>
+      </View>
     );
   }
 }
-
-const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-const styles = {
-  pickerTextStyle: {
-    fontSize: 18,
-    paddingLeft: 20
-  }
-};
 
 const mapStateToProps = (state) => {
   return {
@@ -63,6 +47,15 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onChangeField: (text) => dispatch(actions.updateEmployee(text))
+  }
+};
+
+const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+const styles = {
+  pickerTextStyle: {
+    fontSize: 18,
+    paddingLeft: 20
   }
 };
 
