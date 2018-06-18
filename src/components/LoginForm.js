@@ -19,7 +19,6 @@ class LoginForm extends Component {
 
   renderError = () => {
     if(this.props.error){
-      console.log(this.props.error);
       return (
         <View><Text style={styles.errorTextStyle}>{this.props.error.message}</Text></View>
       );

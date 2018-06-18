@@ -29,7 +29,6 @@ class EmployeeList extends Component {
   }
 
   render(){
-    console.log(this.props.employees);
     if(this.props.employees.length > 0){
       return (
         <ListView

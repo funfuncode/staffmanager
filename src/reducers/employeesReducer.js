@@ -5,7 +5,10 @@ const initState = {};
 export default (state = initState, action) => {
   switch(action.type){
     case actiontypes.FETCH_EMPLOYEES_SUCCESS :
-      return action.payload;
+      if(action.payload !== null){
+        return action.payload;
+      }
+        return state;
     default:
       return state;
   }
